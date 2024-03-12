@@ -1,8 +1,41 @@
 .cardForm {
-    border: 13px black;
-    background-color: rgb(232, 177, 186);
+    border: 2px solid green;
+    border-radius: 5%;
+    background-color: rgb(217, 160, 166);
 }
 
 .thead {
     color: green;
+}
+
+.cardContainer {
+    border: 2px solid green;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    color: black;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+
+.checkButton {
+    background-color:  rgb(240, 251, 185);
+    border: 2px solid green;
+    border-radius: 12px;
+}
+
+.checkButton:hover {
+    background-color: rgb(139, 236, 139);
+}
+
+.checkButton:active {
+    background-color: rgb(80, 239, 80);
 }

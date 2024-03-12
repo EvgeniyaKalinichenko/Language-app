@@ -1,9 +1,9 @@
 const words = [
     {
         "id":"15271",
-        "english":"кошка",
+        "english":"cat",
         "transcription":"[kæt]",
-        "russian":"cat",
+        "russian":"кошка",
         "tags":"",
         "tags_json":"[\"\"]"
     },
