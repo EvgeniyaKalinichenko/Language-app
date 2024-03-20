@@ -3,14 +3,15 @@ import React, { useState } from "react";
 
 const CardComponent = ({ english, transcription, russian }) => {
   const [showTranslation, setShowTranslation] = useState(false);
-
   const handleShowTranslation = () => {
     setShowTranslation(true);
   };
 
   return (
     <div className={styles.cardContainer}>
-      <div className="englishWord">{english}</div>
+      <div english={english} className="englishWord">
+        {english}
+      </div>
       <div className="transcription">{transcription}</div>
       {showTranslation && <div className="russianWord">{russian}</div>}
       {!showTranslation && (

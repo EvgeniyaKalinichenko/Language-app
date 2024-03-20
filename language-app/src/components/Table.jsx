@@ -1,15 +1,15 @@
-import words from "./data";
+import words from "../data";
 import TableRow from "./TableRow";
 import styles from "./Card.module.css";
 
 const Table = () => {
   return (
-    <table className={styles.cardForm}>
+    <table className={styles.table}>
       <thead className={styles.thead}>
         <tr>
-          <td>Word</td>
-          <td>Transcription</td>
-          <td>Translation</td>
+          <td className={styles.td}>Word</td>
+          <td className={styles.td}>Transcription</td>
+          <td className={styles.td}>Translation</td>
         </tr>
       </thead>
       <tbody>

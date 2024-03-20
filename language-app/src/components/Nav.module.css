@@ -1,0 +1,30 @@
+.nav {
+    background-color: rgb(139, 236, 139);
+    width: 50%;
+    height: 5rem;
+    
+}
+
+.links {
+    display: inline-block;
+
+}
+
+.link {
+    color: rgb(71, 69, 69);
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.link:hover {
+    background-color: rgb(80, 239, 80);
+}
+
+.img {
+    padding-left: 10px;
+    /* padding-top: 10px; */
+}

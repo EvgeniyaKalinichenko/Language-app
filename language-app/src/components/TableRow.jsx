@@ -1,35 +1,72 @@
 import Button from "./Button";
 import { useState } from "react";
+import styles from "./Card.module.css";
 
 const TableRow = ({ english, transcription, russian }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const [value, setValue] = useState(english);
-  // const [valueRussian, setValueRussian] = useState(russian);
+  const [value, setValue] = useState({ english, transcription, russian });
 
-  function getValue(event) {
-    const newValue = event.target.value;
-    setValue(newValue);
+  function handleChange(event) {
+    setValue((prevValue) => {
+      return {
+        ...prevValue,
+        [event.target.name]: event.target.value,
+      };
+    });
   }
 
-  return (
+  function handleEdit() {
+    setIsSelected(!isSelected);
+  }
+
+  function handleSave() {
+    setValue({ ...value });
+    setIsSelected(!isSelected);
+  }
+
+  function handleClose() {
+    setIsSelected(!isSelected);
+    setValue({ english, transcription, russian });
+  }
+
+  return isSelected ? (
     <tr>
       <td>
-        {isSelected ? (
-          <input
-            type="text"
-            onChange={getValue}
-            value={value}
-            onBlur={() => setIsSelected(false)}
-          />
-        ) : (
-          <td onClick={() => setIsSelected(true)}>{value}</td>
-        )}
+        <input
+          type="text"
+          onChange={handleChange}
+          value={value.english}
+          name={"english"}
+        />
       </td>
-      <td>{transcription}</td>
-      <td>{russian}</td>
       <td>
-        <Button text="Save" />
-        <Button text="Edit" />
+        <input
+          type="text"
+          onChange={handleChange}
+          value={value.transcription}
+          name={"transcription"}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          onChange={handleChange}
+          value={value.russian}
+          name={"russian"}
+        />
+      </td>
+      <td className={styles.tdButton}>
+        <Button text="Save" onClick={handleSave} />
+        <Button text="Close" onClick={handleClose} />
+      </td>
+    </tr>
+  ) : (
+    <tr>
+      <td>{value.english}</td>
+      <td>{value.transcription}</td>
+      <td>{value.russian}</td>
+      <td className={styles.tdButton}>
+        <Button text="Edit" onClick={handleEdit} />
         <Button text="Delete" />
       </td>
     </tr>

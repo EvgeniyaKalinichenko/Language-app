@@ -1,6 +1,6 @@
-.App {
-  text-align: left;
-}
+/* .App {
+  text-align: center;
+} */
 
 .App-header {
   background-color: #f5eee6;
@@ -10,9 +10,9 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(71, 69, 69);
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */

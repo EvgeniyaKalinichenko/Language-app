@@ -1,8 +1,10 @@
 .button {
-    background-color: rgb(240, 251, 185);
+    background-color: #FFE4C4;
     width: 50px;
-    border: 0;
+    border: 2px solid green;
     color: green;
+    padding: 3px;
+    margin: 1px;
 }
 
 .button:hover {
