@@ -14,11 +14,11 @@ function Navigation() {
       <Link to="/" className={styles.link}>
         Home
       </Link>
-      <Link to="/cards" className={styles.link}>
-        Cards
-      </Link>
       <Link to="/cards_test" className={styles.link}>
         Cards Test
+      </Link>
+      <Link to="/cards" className={styles.link}>
+        All Cards
       </Link>
     </div>
   );

@@ -2,12 +2,13 @@
     background-color: rgb(139, 236, 139);
     width: 50%;
     height: 5rem;
-    
+    position: fixed;
+    top: 7%;
 }
 
 .links {
     display: inline-block;
-
+    /* cursor: pointer; */
 }
 
 .link {

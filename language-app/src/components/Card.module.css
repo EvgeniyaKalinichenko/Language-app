@@ -32,6 +32,8 @@
     height: 15rem;
     color: black;
     background-color: #FAEBD7;
+    font-size:xx-large;
+
 }
 
 .cards {
@@ -44,6 +46,8 @@
     background-color:  rgb(240, 251, 185);
     border: 2px solid green;
     border-radius: 12px;
+    margin-top: 12%;
+    font-size: medium;
 }
 
 .checkButton:hover {
