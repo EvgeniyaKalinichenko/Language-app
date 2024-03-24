@@ -4,6 +4,7 @@ import CardForm from "./components/CardForm";
 import CardWrapper from "./components/CardWrapper";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import MissingPage from "./components/MissingPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Table />} />
             <Route path="/cards" element={<CardForm />} />
             <Route path="/cards_test" element={<CardWrapper />} />
+            <Route path="*" element={<MissingPage />} />
           </Routes>
         </header>
       </div>

@@ -5,9 +5,6 @@ import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import styles from "./Button.module.css";
 import style from "./CardWrapper.module.css";
 
-// export const Carousel = ({ cards }) => {
-//   const [position, setPosition] = useState(0);
-// };
 const CardWrapper = () => {
   const [position, setPosition] = useState(0);
 
@@ -26,31 +23,31 @@ const CardWrapper = () => {
     }
   }
   return (
-    <div className={style.cardWrapper}>
-      <button
-        className={styles.buttonArrow}
-        style={{ fontSize: "42px" }}
-        onClick={showPrevious}
-      >
-        <TiArrowLeftOutline />
-      </button>
-      <CardComponent
-        // name={words[position].name}
-        english={words[position].english}
-        transcription={words[position].transcription}
-        russian={words[position].russian}
-      />
-      <button
-        className={styles.buttonArrow}
-        style={{ fontSize: "42px" }}
-        onClick={showNext}
-      >
-        <TiArrowRightOutline />
-      </button>
-
-      {/* <p className="number_of_card">
-        {position + 1}/{wordsLength}
-      </p> */}
+    <div>
+      <div className={style.cardWrapper}>
+        <button
+          className={styles.buttonArrow}
+          style={{ fontSize: "42px" }}
+          onClick={showPrevious}
+        >
+          <TiArrowLeftOutline />
+        </button>
+        <CardComponent
+          english={words[position].english}
+          transcription={words[position].transcription}
+          russian={words[position].russian}
+        />
+        <button
+          className={styles.buttonArrow}
+          style={{ fontSize: "42px" }}
+          onClick={showNext}
+        >
+          <TiArrowRightOutline />
+        </button>
+      </div>
+      <p className={style.number_of_card}>
+        {position + 1}/{words.length}
+      </p>
     </div>
   );
 };

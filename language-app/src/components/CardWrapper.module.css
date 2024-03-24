@@ -4,3 +4,9 @@
     align-items: center;
     gap: 15px;
 }
+
+.number_of_card {
+    text-align: center;
+    color: rgb(71, 69, 69);
+    font-weight: 600;
+}
