@@ -22,6 +22,7 @@
     color: green;
     background-color:  rgb(240, 251, 185);
     border-radius: 12px;
+    font-size: 42px;
 }
 
 .buttonArrow:hover {

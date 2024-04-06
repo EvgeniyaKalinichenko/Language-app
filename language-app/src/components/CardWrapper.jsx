@@ -7,6 +7,7 @@ import style from "./CardWrapper.module.css";
 
 const CardWrapper = () => {
   const [position, setPosition] = useState(0);
+  const [count, setCount] = useState(0);
 
   function showPrevious() {
     if (position === 0) {
@@ -22,30 +23,32 @@ const CardWrapper = () => {
       setPosition(position + 1);
     }
   }
+  const handleShowTranslation = (index) => {
+    setCount(count + 1);
+    const updatedWords = [...words];
+    updatedWords[index].showTranslation = true;
+    setPosition(index);
+  };
+
   return (
     <div>
+      <p className={style.counter}>Изучено слов: {count} </p>
       <div className={style.cardWrapper}>
-        <button
-          className={styles.buttonArrow}
-          style={{ fontSize: "42px" }}
-          onClick={showPrevious}
-        >
+        <button className={styles.buttonArrow} onClick={showPrevious}>
           <TiArrowLeftOutline />
         </button>
         <CardComponent
           english={words[position].english}
           transcription={words[position].transcription}
           russian={words[position].russian}
+          btnClicked={() => handleShowTranslation(position)}
+          showTranslation={words[position].showTranslation}
         />
-        <button
-          className={styles.buttonArrow}
-          style={{ fontSize: "42px" }}
-          onClick={showNext}
-        >
+        <button className={styles.buttonArrow} onClick={showNext}>
           <TiArrowRightOutline />
         </button>
       </div>
-      <p className={style.number_of_card}>
+      <p className={style.counter}>
         {position + 1}/{words.length}
       </p>
     </div>

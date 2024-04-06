@@ -1,12 +1,12 @@
 import styles from "./Card.module.css";
-import React, { useState } from "react";
 
-const CardComponent = ({ english, transcription, russian }) => {
-  const [showTranslation, setShowTranslation] = useState(false);
-  const handleShowTranslation = () => {
-    setShowTranslation(true);
-  };
-
+const CardComponent = ({
+  english,
+  transcription,
+  russian,
+  btnClicked,
+  showTranslation,
+}) => {
   return (
     <div className={styles.cardContainer}>
       <div english={english} className="englishWord">
@@ -15,7 +15,7 @@ const CardComponent = ({ english, transcription, russian }) => {
       <div className="transcription">{transcription}</div>
       {showTranslation && <div className="russianWord">{russian}</div>}
       {!showTranslation && (
-        <button className={styles.checkButton} onClick={handleShowTranslation}>
+        <button className={styles.checkButton} onClick={btnClicked}>
           Проверить
         </button>
       )}
