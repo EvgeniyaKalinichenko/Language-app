@@ -1,18 +1,14 @@
-.button {
-    background-color: #FFE4C4;
-    width: 50px;
-    border: 2px solid green;
-    color: green;
-    padding: 3px;
-    margin: 1px;
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
 }
 
-.button:hover {
-    background-color: rgb(139, 236, 139);
-}
-
-.button:active {
-    background-color: rgb(80, 239, 80);
+.counter {
+    text-align: center;
+    color: rgb(71, 69, 69);
+    font-weight: 600;
 }
 
 .buttonArrow {

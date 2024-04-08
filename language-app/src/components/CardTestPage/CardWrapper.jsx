@@ -1,8 +1,7 @@
 import CardComponent from "./CardComponent";
-import words from "../data";
+import words from "../../data";
 import React, { useState } from "react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
-import styles from "./Button.module.css";
 import style from "./CardWrapper.module.css";
 
 const CardWrapper = () => {
@@ -34,7 +33,7 @@ const CardWrapper = () => {
     <div>
       <p className={style.counter}>Изучено слов: {count} </p>
       <div className={style.cardWrapper}>
-        <button className={styles.buttonArrow} onClick={showPrevious}>
+        <button className={style.buttonArrow} onClick={showPrevious}>
           <TiArrowLeftOutline />
         </button>
         <CardComponent
@@ -44,7 +43,7 @@ const CardWrapper = () => {
           btnClicked={() => handleShowTranslation(position)}
           showTranslation={words[position].showTranslation}
         />
-        <button className={styles.buttonArrow} onClick={showNext}>
+        <button className={style.buttonArrow} onClick={showNext}>
           <TiArrowRightOutline />
         </button>
       </div>

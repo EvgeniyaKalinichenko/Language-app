@@ -1,6 +1,6 @@
 import words from "../data";
-import CardComponent from "./CardComponent";
-import styles from "./Card.module.css";
+import CardComponent from "./CardTestPage/CardComponent";
+import styles from "./CardTestPage/Card.module.css";
 
 function CardForm() {
   return (

@@ -1,10 +1,15 @@
-import Button from "./Button";
+import Button from "../Button/Button";
 import { useState } from "react";
-import styles from "./Card.module.css";
+import styles from "./Table.module.css";
 
 const TableRow = ({ english, transcription, russian }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState({ english, transcription, russian });
+  const [errors, setErrors] = useState({
+    english: false,
+    transcription: false,
+    russian: false,
+  });
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -12,6 +17,11 @@ const TableRow = ({ english, transcription, russian }) => {
         ...prevValue,
         [event.target.name]: event.target.value,
       };
+    });
+    setErrors({
+      ...errors,
+      [event.target.name]:
+        event.target.value.trim() === "" ? "Field cannot be empty" : false,
     });
   }
 
@@ -37,6 +47,7 @@ const TableRow = ({ english, transcription, russian }) => {
           onChange={handleChange}
           value={value.english}
           name={"english"}
+          className={errors.name ? styles.errorInput : " "}
         />
       </td>
       <td>

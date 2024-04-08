@@ -1,6 +1,6 @@
-import words from "../data";
+import words from "../../data";
 import TableRow from "./TableRow";
-import styles from "./Card.module.css";
+import styles from "./Table.module.css";
 
 const Table = () => {
   return (

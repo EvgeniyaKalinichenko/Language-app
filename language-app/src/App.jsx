@@ -1,9 +1,9 @@
 import "./App.css";
-import Table from "./components/Table";
+import Table from "./components/TablePage/Table";
 import CardForm from "./components/CardForm";
-import CardWrapper from "./components/CardWrapper";
+import CardWrapper from "./components/CardTestPage/CardWrapper";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import MissingPage from "./components/MissingPage";
 
 function App() {
