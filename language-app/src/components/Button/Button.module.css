@@ -14,3 +14,10 @@
 .button:active {
     background-color: rgb(80, 239, 80);
 }
+
+.disabledButton {
+    background-color: #FFE4C4;
+    width: 50px;
+    padding: 3px;
+    margin: 1px;
+}

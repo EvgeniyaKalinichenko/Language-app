@@ -10,6 +10,7 @@ const TableRow = ({ english, transcription, russian }) => {
     transcription: false,
     russian: false,
   });
+  const disabledBtn = Object.values(errors).some((element) => element);
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -30,8 +31,14 @@ const TableRow = ({ english, transcription, russian }) => {
   }
 
   function handleSave() {
-    setValue({ ...value });
-    setIsSelected(!isSelected);
+    if (value.english.match(/[а-яА-ЯЁё0-9]/g)) {
+      setErrors({ ...errors, english: "Please use English alphabet" });
+    } else if (value.russian.match(/[A-Za-z0-9]/g)) {
+      setErrors({ ...errors, russian: "Please use Cyrillic alphabet" });
+    } else {
+      setValue({ ...value });
+      setIsSelected(!isSelected);
+    }
   }
 
   function handleClose() {
@@ -47,8 +54,11 @@ const TableRow = ({ english, transcription, russian }) => {
           onChange={handleChange}
           value={value.english}
           name={"english"}
-          className={errors.name ? styles.errorInput : " "}
+          className={errors.english ? styles.errorInput : " "}
         />
+        <p className={styles.errorParagraph}>
+          {errors.english && errors.english}
+        </p>
       </td>
       <td>
         <input
@@ -56,7 +66,11 @@ const TableRow = ({ english, transcription, russian }) => {
           onChange={handleChange}
           value={value.transcription}
           name={"transcription"}
+          className={errors.transcription ? styles.errorInput : " "}
         />
+        <p className={styles.errorParagraph}>
+          {errors.transcription && errors.transcription}
+        </p>
       </td>
       <td>
         <input
@@ -64,10 +78,14 @@ const TableRow = ({ english, transcription, russian }) => {
           onChange={handleChange}
           value={value.russian}
           name={"russian"}
+          className={errors.russian ? styles.errorInput : " "}
         />
+        <p className={styles.errorParagraph}>
+          {errors.russian && errors.russian}
+        </p>
       </td>
       <td className={styles.tdButton}>
-        <Button text="Save" onClick={handleSave} />
+        <Button text="Save" onClick={handleSave} disabled={disabledBtn} />
         <Button text="Close" onClick={handleClose} />
       </td>
     </tr>

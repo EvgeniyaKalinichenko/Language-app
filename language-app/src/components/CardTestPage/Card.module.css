@@ -14,9 +14,10 @@
 }
 
 .cards {
-    display: flex;
-    flex-direction: row;
-    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    padding-top: 10%;
 }
 
 .checkButton {
