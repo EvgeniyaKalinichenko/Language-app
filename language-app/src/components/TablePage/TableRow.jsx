@@ -32,9 +32,15 @@ const TableRow = ({ english, transcription, russian }) => {
 
   function handleSave() {
     if (value.english.match(/[а-яА-ЯЁё0-9]/g)) {
-      setErrors({ ...errors, english: "Please use English alphabet" });
+      setErrors({
+        ...errors,
+        english: "Please use English alphabet".toUpperCase(),
+      });
     } else if (value.russian.match(/[A-Za-z0-9]/g)) {
-      setErrors({ ...errors, russian: "Please use Cyrillic alphabet" });
+      setErrors({
+        ...errors,
+        russian: "Please use Cyrillic alphabet".toUpperCase(),
+      });
     } else {
       setValue({ ...value });
       setIsSelected(!isSelected);
