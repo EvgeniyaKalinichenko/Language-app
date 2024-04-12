@@ -25,7 +25,7 @@
 }
 
 .errorParagraph {
-    font-weight: lighter;
+    font-weight: normal;
     color: red;
     font-size: small;
 }

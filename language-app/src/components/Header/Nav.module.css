@@ -2,8 +2,10 @@
     background-color: rgb(139, 236, 139);
     width: 50%;
     height: 5rem;
-    position: fixed;
-    top: 5%;
+    position: relative;
+
+    /* display: flex; */
+    /* margin-top:0%; */
 
 }
 
