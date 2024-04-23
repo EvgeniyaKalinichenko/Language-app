@@ -1,12 +1,13 @@
 import CardComponent from "./CardComponent";
-import words from "../../data";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import style from "./CardWrapper.module.css";
+import { WordContext } from "../Context";
 
 const CardWrapper = () => {
   const [position, setPosition] = useState(0);
   const [count, setCount] = useState(0);
+  const { words } = useContext(WordContext);
 
   function showPrevious() {
     if (position === 0) {
@@ -15,6 +16,7 @@ const CardWrapper = () => {
       setPosition(position - 1);
     }
   }
+
   function showNext() {
     if (position === words.length - 1) {
       setPosition(0);

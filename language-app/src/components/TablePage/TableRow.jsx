@@ -1,16 +1,22 @@
 import Button from "../Button/Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./Table.module.css";
+import { WordContext } from "../Context";
 
-const TableRow = ({ english, transcription, russian }) => {
+const TableRow = ({ id, english, transcription, russian }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const [value, setValue] = useState({ english, transcription, russian });
+  const [value, setValue] = useState({ id, english, transcription, russian });
   const [errors, setErrors] = useState({
     english: false,
     transcription: false,
     russian: false,
   });
   const disabledBtn = Object.values(errors).some((element) => element);
+  const { handleDeleteWord } = useContext(WordContext);
+
+  function handleDelete(id) {
+    handleDeleteWord(id);
+  }
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -102,7 +108,7 @@ const TableRow = ({ english, transcription, russian }) => {
       <td>{value.russian}</td>
       <td className={styles.tdButton}>
         <Button text="Edit" onClick={handleEdit} />
-        <Button text="Delete" />
+        <Button text="Delete" onClick={() => handleDelete(id)} />
       </td>
     </tr>
   );
