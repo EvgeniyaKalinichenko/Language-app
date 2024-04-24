@@ -1,4 +1,3 @@
-// import words from "../../data";
 import TableRow from "./TableRow";
 import styles from "./Table.module.css";
 import { useContext } from "react";

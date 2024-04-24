@@ -21,7 +21,7 @@ const AddNewWord = () => {
 
   const handleAddWord = (e) => {
     e.preventDefault();
-    console.log("i/m here");
+    console.log("i'm here");
     console.log(newWord);
     addWord(newWord);
     setNewWord({ english: "", transcription: "", russian: "" });
@@ -52,7 +52,7 @@ const AddNewWord = () => {
           value={newWord.russian}
           onChange={handleChange}
         />
-        <button type="submit" onClick={handleAddWord}>
+        <button type="button" onClick={handleAddWord}>
           Add
         </button>
       </form>

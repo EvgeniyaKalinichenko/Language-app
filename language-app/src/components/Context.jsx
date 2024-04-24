@@ -24,7 +24,6 @@ const WordProvider = ({ children }) => {
           tags: [],
         }),
       });
-
       if (!response.ok) {
         throw new Error("Failed to fetch add words");
       }
@@ -60,7 +59,7 @@ const WordProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error("Failed to delete word");
       }
-
+      console.log(words);
       setWords(words.filter((word) => word.id !== wordId));
     } catch (error) {
       console.error("Error deleting task:", error);
