@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 
+const API_ALL_WORDS = 'http://itgirlschool.justmakeit.ru/api/words';
 const WordContext = createContext();
 
 const WordProvider = ({ children }) => {
@@ -10,9 +11,8 @@ const WordProvider = ({ children }) => {
   }, []);
 
   const addWord = async (newWord) => {
-    console.log("newWord", newWord);
     try {
-      const response = await fetch(`api/words/add`, {
+      const response = await fetch(`${API_ALL_WORDS}/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -36,9 +36,7 @@ const WordProvider = ({ children }) => {
 
   const loadData = async () => {
     try {
-      const response = await fetch(
-        `http://itgirlschool.justmakeit.ru/api/words`
-      );
+      const response = await fetch(API_ALL_WORDS);
       if (!response.ok) {
         throw new Error("Failed to fetch words");
       }
@@ -48,6 +46,41 @@ const WordProvider = ({ children }) => {
       console.error("Error fetching words:", error);
     }
   };
+
+  const handleUpdateWord = async (id, updatedWord) => {
+    const body = {
+    english: updatedWord.english,
+    id: id,
+    russian: updatedWord.russian,
+    tags: "",
+    tags_json: "[\"\"]",
+    transcription: updatedWord.transcription
+    }
+    
+    try {
+    const response = await fetch(
+    `${API_ALL_WORDS}/${id}/update`,
+    {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    }
+    );
+    
+    if (!response.ok) {
+    throw new Error("Failed to update word");
+    }
+    const data = await response.json();
+    
+    setWords((prevWords) =>
+    prevWords.map((word) => (word.id === id ? data : word))
+    );
+    } catch (error) {
+    console.error("Error updating word:", error);
+    }
+    };
 
   const handleDeleteWord = async (wordId) => {
     console.log("id", wordId);
@@ -68,7 +101,7 @@ const WordProvider = ({ children }) => {
 
   return (
     <WordContext.Provider
-      value={{ words, addWord, setWords, handleDeleteWord }}
+      value={{ words, addWord, setWords, handleUpdateWord, handleDeleteWord }}
     >
       {children}
     </WordContext.Provider>
