@@ -1,5 +1,5 @@
 import styles from "./Card.module.css";
-import { useRef, useEffect } from "react";
+import {  useEffect } from "react";
 
 const CardComponent = ({
   english,
@@ -9,11 +9,9 @@ const CardComponent = ({
   showTranslation,
   position,
 }) => {
-  const checkButtonRef = useRef(null);
 
   useEffect(() => {
     console.log("positions", position);
-    checkButtonRef.current.focus();
   }, [position]);
 
   return (
@@ -25,7 +23,6 @@ const CardComponent = ({
       {showTranslation && <div className="russianWord">{russian}</div>}
       {!showTranslation && (
         <button
-          ref={checkButtonRef}
           className={styles.checkButton}
           onClick={btnClicked}
         >

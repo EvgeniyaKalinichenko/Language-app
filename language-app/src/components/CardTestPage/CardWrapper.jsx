@@ -1,10 +1,12 @@
 import CardComponent from "./CardComponent";
-import words from "../../data";
+// import words from "../../data";
 import React, { useState } from "react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import style from "./CardWrapper.module.css";
+import { inject, observer } from "mobx-react";
+import { useEffect } from "react";
 
-const CardWrapper = () => {
+function CardWrapper ({words}) {
   const [position, setPosition] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -54,4 +56,16 @@ const CardWrapper = () => {
   );
 };
 
-export default CardWrapper;
+export default inject(({wordsStore})=>{
+  const {words, loadData} = wordsStore;
+
+  useEffect(()=>{
+    loadData()
+  },[]);
+
+  return {
+    words,
+    loadData
+  }
+})(observer(CardWrapper));
+
