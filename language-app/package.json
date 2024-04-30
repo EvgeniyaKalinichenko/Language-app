@@ -2,6 +2,7 @@
   "name": "language-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://itgirlschool.justmakeit.ru",
   "babel": {
     "presets": [
       "@babel/preset-env"

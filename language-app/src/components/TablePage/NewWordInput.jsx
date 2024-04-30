@@ -4,7 +4,7 @@ import styles from "./Table.module.css";
 import { inject, observer } from "mobx-react";
 
 
-const AddNewWord = (addWord) => {
+const AddNewWord = ({addWord}) => {
 //   const { addWord } = useContext(WordContext);
   const [newWord, setNewWord] = useState({
     english: "",
