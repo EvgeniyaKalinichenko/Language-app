@@ -1,8 +1,9 @@
 .table {
     border: 2px solid green;
     background-color: #FAEBD7;
-    width: 50%;
+    width: 100%;
     padding: 7px;
+
 }
 
 .thead {
