@@ -29,3 +29,18 @@
     color: red;
     font-size: small;
 }
+
+.input {
+    margin: 10px;
+    width: 100%;
+
+}
+
+.firstParagraph {
+    width: 100%;
+    padding-bottom: 0;
+}
+
+.formInputs {
+    margin-top: 0;
+}

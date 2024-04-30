@@ -3,9 +3,12 @@ import TableRow from "./TableRow";
 import styles from "./Table.module.css";
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
+import NewWordInput from './NewWordInput';
 
 function Table  ({words})  {
   return (
+    <>
+    <NewWordInput />
     <table className={styles.table}>
       <thead className={styles.thead}>
         <tr>
@@ -20,6 +23,7 @@ function Table  ({words})  {
         ))}
       </tbody>
     </table>
+    </>
   );
 };
 
