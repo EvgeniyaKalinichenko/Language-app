@@ -7,7 +7,7 @@ import NewWordInput from './NewWordInput';
 
 function Table  ({words})  {
   return (
-    <>
+    <div className="homePage">
     <NewWordInput />
     <table className={styles.table}>
       <thead className={styles.thead}>
@@ -23,7 +23,7 @@ function Table  ({words})  {
         ))}
       </tbody>
     </table>
-    </>
+    </div>
   );
 };
 
