@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
+const API_ALL_WORDS = 'http://itgirlschool.justmakeit.ru/api/words';
 class WordsStore {
     words = [];
 
@@ -9,7 +10,7 @@ class WordsStore {
 
     loadData = async () => {
         try {
-            const response = await fetch(`http://itgirlschool.justmakeit.ru/api/words`);
+            const response = await fetch(`${API_ALL_WORDS}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch words");
             }
@@ -22,7 +23,7 @@ class WordsStore {
 
     addWord = async (value) => {
         try {
-            const response = await fetch(`http://sandbox.itgirlschool.ru/api/words/add`, {
+            const response = await fetch(`${API_ALL_WORDS}/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
@@ -41,6 +42,22 @@ class WordsStore {
             this.loadData();
         } catch (error) {
             console.error("Error fetching words:", error);
+        }
+    };
+
+    handleDeleteWord = async (id) => {
+        console.log("id", id);
+        try {
+            const response = await fetch(`${API_ALL_WORDS}/${id}/delete`, {
+                method: "POST",
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to delete word");
+            }
+            this.words = this.words.filter((word) => word.id !== id);
+        } catch (error) {
+            console.error("Error deleting task:", error);
         }
     };
 
@@ -80,22 +97,7 @@ class WordsStore {
     //     }
     // };
 
-    // handleDeleteWord = async (wordId) => {
-    //     console.log("id", wordId);
-    //     try {
-    //         const response = await fetch(`api/words/${wordId}/delete`, {
-    //             method: "POST",
-    //         });
 
-    //         if (!response.ok) {
-    //             throw new Error("Failed to delete word");
-    //         }
-    //         console.log(words);
-    //         setWords(words.filter((word) => word.id !== wordId));
-    //     } catch (error) {
-    //         console.error("Error deleting task:", error);
-    //     }
-    // };
 }
 
 export default WordsStore;

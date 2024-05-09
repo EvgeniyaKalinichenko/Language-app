@@ -1,8 +1,9 @@
-import Button from "../Button/Button";
 import { useState } from "react";
+import { inject, observer } from "mobx-react";
+import Button from "../Button/Button";
 import styles from "./Table.module.css";
 
-const TableRow = ({ english, transcription, russian }) => {
+const TableRow = ({ id, english, transcription, russian, handleDeleteWord }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState({ english, transcription, russian });
   const [errors, setErrors] = useState({
@@ -11,6 +12,10 @@ const TableRow = ({ english, transcription, russian }) => {
     russian: false,
   });
   const disabledBtn = Object.values(errors).some((element) => element);
+
+  const handleDelete = () => {
+    handleDeleteWord(id);
+};
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -102,10 +107,16 @@ const TableRow = ({ english, transcription, russian }) => {
       <td>{value.russian}</td>
       <td className={styles.tdButton}>
         <Button text="Edit" onClick={handleEdit} />
-        <Button text="Delete" />
+        <Button text="Delete" onClick={handleDelete}/>
       </td>
     </tr>
   );
 };
 
-export default TableRow;
+export default inject(({wordsStore})=>{
+  const  {handleDeleteWord} = wordsStore;
+
+  return {
+    handleDeleteWord
+  }
+})(observer(TableRow));
