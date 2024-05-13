@@ -23,7 +23,7 @@ class WordsStore {
 
     addWord = async (value) => {
         try {
-            const response = await fetch(`${API_ALL_WORDS}/add`, {
+            const response = await fetch(`/api/words/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
@@ -62,40 +62,41 @@ class WordsStore {
     };
 
 
-    // handleUpdateWord = async (id, updatedWord) => {
-    //     const body = {
-    //         english: updatedWord.english,
-    //         id: id,
-    //         russian: updatedWord.russian,
-    //         tags: "",
-    //         tags_json: "[\"\"]",
-    //         transcription: updatedWord.transcription
-    //     }
+    handleUpdateWord = async (id, updatedWord) => {
+        const body = {
+            id: id,
+            english: updatedWord.english,
+            transcription: updatedWord.transcription,
+            russian: updatedWord.russian,
+            tags: "",
+            tags_json: "[\"\"]",
+        }
 
-    //     try {
-    //         const response = await fetch(
-    //             `${API_ALL_WORDS}/${id}/update`,
-    //             {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                 },
-    //                 body: JSON.stringify(body),
-    //             }
-    //         );
+        try {
+            const response = await fetch(
+                `${API_ALL_WORDS}/${id}/update`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(body),
+                }
+            );
 
-    //         if (!response.ok) {
-    //             throw new Error("Failed to update word");
-    //         }
-    //         const data = await response.json();
-
-    //         setWords((prevWords) =>
-    //             prevWords.map((word) => (word.id === id ? data : word))
-    //         );
-    //     } catch (error) {
-    //         console.error("Error updating word:", error);
-    //     }
-    // };
+            if (!response.ok) {
+                throw new Error("Failed to update word");
+            }
+            // const data = await response.json();
+            const updatedWords = this.words.map((word) => (word.id === id ? updatedWord : word));
+            this.words = updatedWords;
+            // setWords((prevWords) =>
+            //     prevWords.map((word) => (word.id === id ? data : word))
+            // );
+        } catch (error) {
+            console.error("Error updating word:", error);
+        }
+    };
 
 
 }

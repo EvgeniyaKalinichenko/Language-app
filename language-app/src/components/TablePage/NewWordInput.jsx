@@ -1,11 +1,8 @@
 import {  useState } from "react";
-// import { WordContext } from "../Context";
-import styles from "./Table.module.css";
 import { inject, observer } from "mobx-react";
-
+import styles from "./Table.module.css";
 
 const AddNewWord = ({addWord}) => {
-//   const { addWord } = useContext(WordContext);
   const [newWord, setNewWord] = useState({
     english: "",
     transcription: "",
@@ -14,12 +11,17 @@ const AddNewWord = ({addWord}) => {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setNewWord(value);
+    const name = e.target.name;
+    console.log(value);
+    setNewWord(newWord => {
+      return {...newWord, [name]: value}
+    });
   };
 
   const handleAddWord = (e) => {
     e.preventDefault();
     addWord(newWord);
+    setNewWord({english:"", transcription:"", russian: ""})
   };
 
   return (
