@@ -1,9 +1,9 @@
-import CardComponent from "./CardComponent";
-// import words from "../../data";
 import React, { useState, useEffect } from "react";
-import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
-import style from "./CardWrapper.module.css";
 import { inject, observer } from "mobx-react";
+import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
+import CardComponent from "./CardComponent";
+import style from "./CardWrapper.module.css";
+
 
 
 function CardWrapper ({words}) {

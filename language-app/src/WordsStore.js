@@ -51,7 +51,6 @@ class WordsStore {
             const response = await fetch(`${API_ALL_WORDS}/${id}/delete`, {
                 method: "POST",
             });
-
             if (!response.ok) {
                 throw new Error("Failed to delete word");
             }
@@ -61,17 +60,7 @@ class WordsStore {
         }
     };
 
-
     handleUpdateWord = async (id, updatedWord) => {
-        const body = {
-            id: id,
-            english: updatedWord.english,
-            transcription: updatedWord.transcription,
-            russian: updatedWord.russian,
-            tags: "",
-            tags_json: "[\"\"]",
-        }
-
         try {
             const response = await fetch(
                 `${API_ALL_WORDS}/${id}/update`,
@@ -80,25 +69,25 @@ class WordsStore {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(body),
+                    body: JSON.stringify({
+                        id: id,
+                        english: updatedWord.english,
+                        transcription: updatedWord.transcription,
+                        russian: updatedWord.russian,
+                        tags: "",
+                        tags_json: "[\"\"]",
+                    }),
                 }
             );
-
             if (!response.ok) {
                 throw new Error("Failed to update word");
             }
-            // const data = await response.json();
             const updatedWords = this.words.map((word) => (word.id === id ? updatedWord : word));
             this.words = updatedWords;
-            // setWords((prevWords) =>
-            //     prevWords.map((word) => (word.id === id ? data : word))
-            // );
         } catch (error) {
             console.error("Error updating word:", error);
         }
     };
-
-
 }
 
 export default WordsStore;

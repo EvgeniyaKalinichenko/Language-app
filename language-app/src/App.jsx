@@ -1,12 +1,13 @@
 import "./App.css";
-import Table from "./components/TablePage/Table";
-import CardForm from "./components/CardForm";
-import CardWrapper from "./components/CardTestPage/CardWrapper";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import MissingPage from "./components/MissingPage";
-import WordsStore from "./WordsStore";
 import { Provider } from 'mobx-react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Table from "./components/TablePage/Table";
+import CardForm from "./components/AllFormsPage/CardForm";
+import CardWrapper from "./components/CardTestPage/CardWrapper";
+import Header from "./components/Header/Header";
+import MissingPage from "./components/MissingPage/MissingPage";
+import WordsStore from "./WordsStore";
+
 
 const store = {
   wordsStore: new WordsStore(),

@@ -1,4 +1,3 @@
-
 .cardContainer {
     border: 2px solid green;
     border-radius: 5%;
@@ -10,18 +9,17 @@
     height: 15rem;
     color: rgb(71, 69, 69);
     background-color: #FAEBD7;
-    font-size:xx-large;
+    font-size: xx-large;
 }
 
 .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    /* padding-top: 10%; */
 }
 
 .checkButton {
-    background-color:  rgb(240, 251, 185);
+    background-color: rgb(240, 251, 185);
     border: 2px solid green;
     border-radius: 12px;
     margin-top: 12%;

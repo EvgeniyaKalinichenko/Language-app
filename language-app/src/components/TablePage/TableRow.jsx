@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import Button from "../Button/Button";
 import styles from "./Table.module.css";
 
-const TableRow = ({ id, english, transcription, russian, handleDeleteWord }) => {
+const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handleUpdateWord, updatedWord }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState({ english, transcription, russian });
   const [errors, setErrors] = useState({
@@ -16,6 +16,9 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord }) => 
   const handleDelete = () => {
     handleDeleteWord(id);
 };
+  const handleUpdate = () => {
+    handleUpdateWord (id, updatedWord);
+  }
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -48,6 +51,7 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord }) => 
       });
     } else {
       setValue({ ...value });
+      handleUpdate (id, updatedWord);
       setIsSelected(!isSelected);
     }
   }
@@ -114,9 +118,10 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord }) => 
 };
 
 export default inject(({wordsStore})=>{
-  const  {handleDeleteWord} = wordsStore;
+  const  {handleDeleteWord, handleUpdateWord} = wordsStore;
 
   return {
-    handleDeleteWord
+    handleDeleteWord,
+    handleUpdateWord
   }
 })(observer(TableRow));

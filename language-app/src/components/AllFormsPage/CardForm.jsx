@@ -1,9 +1,7 @@
-// import words from "../data";
-import CardComponent from "./CardTestPage/CardComponent";
-import styles from "./CardTestPage/Card.module.css";
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
-
+import CardComponent from "../CardTestPage/CardComponent";
+import styles from "../CardTestPage/Card.module.css";
 
 function CardForm({words}) {
   return (
