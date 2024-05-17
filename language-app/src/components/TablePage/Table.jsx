@@ -1,9 +1,8 @@
-// import words from "../../data";
-import TableRow from "./TableRow";
-import styles from "./Table.module.css";
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
+import TableRow from "./TableRow";
 import NewWordInput from './NewWordInput';
+import styles from "./Table.module.css";
 
 function Table  ({words})  {
   return (

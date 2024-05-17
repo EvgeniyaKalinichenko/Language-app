@@ -4,8 +4,6 @@ import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import CardComponent from "./CardComponent";
 import style from "./CardWrapper.module.css";
 
-
-
 function CardWrapper ({words}) {
   const [position, setPosition] = useState(0);
   const [count, setCount] = useState(0);

@@ -1,5 +1,5 @@
 import styles from "./Card.module.css";
-import {  useEffect } from "react";
+import { useEffect } from "react";
 
 const CardComponent = ({
   english,

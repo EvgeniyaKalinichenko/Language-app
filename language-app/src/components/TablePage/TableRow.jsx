@@ -17,7 +17,7 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handl
     handleDeleteWord(id);
 };
   const handleUpdate = () => {
-    handleUpdateWord (id, updatedWord);
+    handleUpdateWord (id, value);
   }
 
   function handleChange(event) {

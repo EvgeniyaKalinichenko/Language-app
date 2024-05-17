@@ -12,6 +12,7 @@ function CardForm({words}) {
           english={words.english}
           transcription={words.transcription}
           russian={words.russian}
+          
           {...word}
         />
       ))}
