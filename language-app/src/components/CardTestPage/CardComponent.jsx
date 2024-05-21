@@ -8,7 +8,6 @@ const CardComponent = ({
   btnClicked,
   showTranslation,
   position,
-  wordId,
 }) => {
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const CardComponent = ({
       {!showTranslation && (
         <button
           className={styles.checkButton}
-          onClick={btnClicked(wordId)}
+          onClick={btnClicked}
         >
           Проверить
         </button>

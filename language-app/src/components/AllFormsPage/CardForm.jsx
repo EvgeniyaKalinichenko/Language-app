@@ -3,21 +3,13 @@ import { useEffect, useState } from "react";
 import CardComponent from "../CardTestPage/CardComponent";
 import styles from "../CardTestPage/Card.module.css";
 
-function CardForm ({words, id}) {
+function CardForm ({words}) {
   const [position, setPosition] = useState(0);
-  const wordId = words.id;
 
   const handleShowTranslation = (index) => {
-    // if (position === 0) {
-    //   setPosition(words.length - 1);
-    // } else {
-    //   setPosition(position - 1);
-    // }
-    const updatedWords = [...words];
-    
-    updatedWords[index].showTranslation = true;
+    const updatedWords = [...words]; 
+    updatedWords[index].showTranslation= true;
     setPosition(index);
-
   };
 
   return (
@@ -30,7 +22,6 @@ function CardForm ({words, id}) {
           russian={words.russian}
           btnClicked={() => handleShowTranslation(position)}
           showTranslation={words[position].showTranslation}
-          wordId={wordId}
           {...word}
         />
       ))}
@@ -39,7 +30,7 @@ function CardForm ({words, id}) {
 }
 
 export default inject(({wordsStore})=>{
-  const {words, loadData, id} = wordsStore;
+  const {words, loadData} = wordsStore;
 
   useEffect(()=>{
     loadData()
@@ -48,6 +39,5 @@ export default inject(({wordsStore})=>{
   return {
     words,
     loadData,
-    id
   }
 })(observer(CardForm));
