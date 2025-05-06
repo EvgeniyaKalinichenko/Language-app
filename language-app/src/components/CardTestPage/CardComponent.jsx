@@ -1,5 +1,4 @@
 import styles from "./Card.module.css";
-import { useEffect } from "react";
 
 const CardComponent = ({
   english,
@@ -7,25 +6,17 @@ const CardComponent = ({
   russian,
   btnClicked,
   showTranslation,
-  position,
 }) => {
-
-  useEffect(() => {
-    console.log("positions", position);
-  }, [position]);
-
   return (
     <div className={styles.cardContainer}>
-      <div english={english} className="englishWord">
+      <div className={styles.englishWord}>
         {english}
       </div>
-      <div className="transcription">{transcription}</div>
-      {showTranslation && <div className="russianWord">{russian}</div>}
-      {!showTranslation && (
-        <button
-          className={styles.checkButton}
-          onClick={btnClicked}
-        >
+      <div className={styles.transcription}>{transcription}</div>
+      {showTranslation ? (
+        <div className={styles.russianWord}>{russian}</div>
+      ) : (
+        <button className={styles.checkButton} onClick={btnClicked}>
           Проверить
         </button>
       )}
@@ -34,3 +25,4 @@ const CardComponent = ({
 };
 
 export default CardComponent;
+

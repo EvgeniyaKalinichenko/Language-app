@@ -1,43 +1,35 @@
 import { inject, observer } from "mobx-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CardComponent from "../CardTestPage/CardComponent";
 import styles from "../CardTestPage/Card.module.css";
 
-function CardForm ({words}) {
-  const [position, setPosition] = useState(0);
+function CardForm({ wordsStore }) {
+  const { words, loadData } = wordsStore;
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleShowTranslation = (index) => {
-    const updatedWords = [...words]; 
-    updatedWords[index].showTranslation= true;
-    setPosition(index);
+    if (words[index]) {
+      words[index].showTranslation = true; // ✅ MobX увидит это изменение
+    }
   };
 
   return (
     <div className={styles.cards}>
-      {words.map((word) => (
+      {words.map((word, index) => (
         <CardComponent
-          key={words.id}
-          english={words.english}
-          transcription={words.transcription}
-          russian={words.russian}
-          btnClicked={() => handleShowTranslation(position)}
-          showTranslation={words[position].showTranslation}
-          {...word}
+          key={word.id || index}
+          english={word.english}
+          transcription={word.transcription}
+          russian={word.russian}
+          btnClicked={() => handleShowTranslation(index)} // ✅ уникальный index
+          showTranslation={word.showTranslation} // ✅ каждый word управляет собой
         />
       ))}
     </div>
   );
 }
 
-export default inject(({wordsStore})=>{
-  const {words, loadData} = wordsStore;
-
-  useEffect(()=>{
-    loadData()
-  },[]);
-
-  return {
-    words,
-    loadData,
-  }
-})(observer(CardForm));
+export default inject("wordsStore")(observer(CardForm));

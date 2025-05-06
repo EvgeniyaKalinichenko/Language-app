@@ -3,7 +3,15 @@ import { inject, observer } from "mobx-react";
 import Button from "../Button/Button";
 import styles from "./Table.module.css";
 
-const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handleUpdateWord, updatedWord }) => {
+const TableRow = ({
+  id,
+  english,
+  transcription,
+  russian,
+  handleDeleteWord,
+  handleUpdateWord,
+  updatedWord,
+}) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState({ english, transcription, russian });
   const [errors, setErrors] = useState({
@@ -15,10 +23,10 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handl
 
   const handleDelete = () => {
     handleDeleteWord(id);
-};
+  };
   const handleUpdate = () => {
-    handleUpdateWord (id, value);
-  }
+    handleUpdateWord(id, value);
+  };
 
   function handleChange(event) {
     setValue((prevValue) => {
@@ -51,7 +59,7 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handl
       });
     } else {
       setValue({ ...value });
-      handleUpdate (id, updatedWord);
+      handleUpdate(id, updatedWord);
       setIsSelected(!isSelected);
     }
   }
@@ -64,40 +72,46 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handl
   return isSelected ? (
     <tr>
       <td>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={value.english}
-          name={"english"}
-          className={errors.english ? styles.errorInput : " "}
-        />
-        <p className={styles.errorParagraph}>
-          {errors.english && errors.english}
-        </p>
+        <div className={styles.inputWrapper}>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={value.english}
+            name={"english"}
+            className={errors.english ? styles.errorInput : " "}
+          />
+          <p className={styles.errorParagraph}>
+            {errors.english && errors.english}
+          </p>
+        </div>
       </td>
       <td>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={value.transcription}
-          name={"transcription"}
-          className={errors.transcription ? styles.errorInput : " "}
-        />
-        <p className={styles.errorParagraph}>
-          {errors.transcription && errors.transcription}
-        </p>
+        <div className={styles.inputWrapper}>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={value.transcription}
+            name={"transcription"}
+            className={errors.transcription ? styles.errorInput : " "}
+          />
+          <p className={styles.errorParagraph}>
+            {errors.transcription && errors.transcription}
+          </p>
+        </div>
       </td>
       <td>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={value.russian}
-          name={"russian"}
-          className={errors.russian ? styles.errorInput : " "}
-        />
-        <p className={styles.errorParagraph}>
-          {errors.russian && errors.russian}
-        </p>
+        <div className={styles.inputWrapper}>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={value.russian}
+            name={"russian"}
+            className={errors.russian ? styles.errorInput : " "}
+          />
+          <p className={styles.errorParagraph}>
+            {errors.russian && errors.russian}
+          </p>
+        </div>
       </td>
       <td className={styles.tdButton}>
         <Button text="Save" onClick={handleSave} disabled={disabledBtn} />
@@ -111,17 +125,17 @@ const TableRow = ({ id, english, transcription, russian, handleDeleteWord, handl
       <td>{value.russian}</td>
       <td className={styles.tdButton}>
         <Button text="Edit" onClick={handleEdit} />
-        <Button text="Delete" onClick={handleDelete}/>
+        <Button text="Delete" onClick={handleDelete} />
       </td>
     </tr>
   );
 };
 
-export default inject(({wordsStore})=>{
-  const  {handleDeleteWord, handleUpdateWord} = wordsStore;
+export default inject(({ wordsStore }) => {
+  const { handleDeleteWord, handleUpdateWord } = wordsStore;
 
   return {
     handleDeleteWord,
-    handleUpdateWord
-  }
+    handleUpdateWord,
+  };
 })(observer(TableRow));
