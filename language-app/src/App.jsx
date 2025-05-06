@@ -16,7 +16,7 @@ const store = {
 function App() {
   return (
     <Provider {...store}>
-      <Router>
+      <Router basename="/Language-app">
         <div className="App">
           <header className="App-header">
             <Header />
