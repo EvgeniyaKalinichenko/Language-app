@@ -12,7 +12,7 @@ function CardForm({ wordsStore }) {
 
   const handleShowTranslation = (index) => {
     if (words[index]) {
-      words[index].showTranslation = true; // ✅ MobX увидит это изменение
+      words[index].showTranslation = true;
     }
   };
 
@@ -24,8 +24,8 @@ function CardForm({ wordsStore }) {
           english={word.english}
           transcription={word.transcription}
           russian={word.russian}
-          btnClicked={() => handleShowTranslation(index)} // ✅ уникальный index
-          showTranslation={word.showTranslation} // ✅ каждый word управляет собой
+          btnClicked={() => handleShowTranslation(index)}
+          showTranslation={word.showTranslation} 
         />
       ))}
     </div>
