@@ -14,7 +14,7 @@
     "react-router-dom": "^6.22.3",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://EvgeniyaKalinichenko.github.io/Language-app",
+  "homepage": "https://evgeniyakalinichenko.github.io/language-app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
