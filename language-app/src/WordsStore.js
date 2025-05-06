@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-const API_BASE = "http://itgirlschool.justmakeit.ru/api";
+const API_BASE = "https://itgirlschool.justmakeit.ru/api";
 
 class WordsStore {
   words = [];
